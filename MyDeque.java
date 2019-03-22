@@ -34,13 +34,25 @@ public class MyDeque<E>{
     }
     return returnValue;
   }
+  @SuppressWarnings("unchecked")
   public void addFirst(E element){
     if (element == null){
       throw new NullPointerException("Element is null");
     }
     if (start == 0 && end == data.length){
-      
+      E[] dataTemp = new (E[])new Object[data.length + 1];
+      for (int i = 0; i < data.length; i++){
+        dataTemp[i + 1] = data[i];
+      }
+      dataTemp[start] = element;
+      data = dataTemp;
+      return;
     }
+    if (start != 0 && end != start - 1){
+      dataTemp
+    }
+
+
   }
   public void addLast(E element){ }
   public E removeFirst(){ }
