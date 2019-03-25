@@ -7,12 +7,15 @@ public class MyDeque<E>{
   public MyDeque(){
     data = (E[])new Object[10];
     start = 0;
-    size = 10;
-    end = 9;
+    size = 0;
+    end = 0;
   }
   @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
+    start = 0;
+    size = 0;
+    end = 0;
   }
   public int size(){
     return size;
@@ -57,7 +60,22 @@ public class MyDeque<E>{
     size++;
 
   }
-  public void addLast(E element){ }
+  public void addLast(E element){
+    if (element == null) {
+      throw new NullPointerException();
+     }
+    if (size == data.length ) {
+      resize();
+      }
+    if (size!= 0 && end == data.length - 1){
+      end = 0;
+      }
+    else{
+      end++;
+      }
+    data[end] = element;
+    size++;
+     }
   public E removeFirst(){
     if (size == 0){
       throw new NoSuchElementException();
@@ -71,10 +89,11 @@ public class MyDeque<E>{
     if (size == 0){
       throw new NoSuchElementException();
     }
-    E returnValue = data[start];
-    start++;
+    E returnValue = data[end];
+    end--;
     size--;
-    return returnValue; }
+    return returnValue;
+  }
   public E getFirst(){
     if (size == 0){
       throw new NoSuchElementException();
