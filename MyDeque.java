@@ -58,6 +58,16 @@ public class MyDeque<E>{
   public void addLast(E element){ }
   public E removeFirst(){ }
   public E removeLast(){ }
-  public E getFirst(){ }
-  public E getLast(){ }
+  public E getFirst(){
+    if (size == 0){
+      throw new NoSuchElementException();
+    }
+    return data[start];
+  }
+  public E getLast(){
+    if (size == 0){
+      throw new NoSuchElementException();
+    }
+    return data[end];
+  }
 }
