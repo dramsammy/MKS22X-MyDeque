@@ -1,3 +1,5 @@
+import java.util.*;
+@SuppressWarnings("unchecked")
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
@@ -56,8 +58,23 @@ public class MyDeque<E>{
 
   }
   public void addLast(E element){ }
-  public E removeFirst(){ }
-  public E removeLast(){ }
+  public E removeFirst(){
+    if (size == 0){
+      throw new NoSuchElementException();
+    }
+    E returnValue = data[start];
+    start++;
+    size--;
+    return returnValue;
+   }
+  public E removeLast(){
+    if (size == 0){
+      throw new NoSuchElementException();
+    }
+    E returnValue = data[start];
+    start++;
+    size--;
+    return returnValue; }
   public E getFirst(){
     if (size == 0){
       throw new NoSuchElementException();
