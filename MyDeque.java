@@ -4,13 +4,16 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
+    start = 0;
+    size = 10;
+    end = 9;
   }
   @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
   }
   public int size(){
-    return data.length;
+    return size;
   }
   public String toString(){
     String returnValue = "{";
@@ -40,18 +43,16 @@ public class MyDeque<E>{
       throw new NullPointerException("Element is null");
     }
     if (start == 0 && end == data.length){
-      E[] dataTemp = new (E[])new Object[data.length + 1];
-      for (int i = 0; i < data.length; i++){
-        dataTemp[i + 1] = data[i];
-      }
-      dataTemp[start] = element;
-      data = dataTemp;
-      return;
+      resize();
     }
-    if (start != 0 && end != start - 1){
-      dataTemp
+    if (size != 0 && start == 0){
+      start = data.length - 1;
     }
-
+    if (size != 0 && start != 0){
+      start--;
+    }
+    data[start] = element;
+    size++;
 
   }
   public void addLast(E element){ }
