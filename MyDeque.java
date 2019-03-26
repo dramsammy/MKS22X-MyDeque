@@ -24,12 +24,12 @@ public class MyDeque<E>{
     String returnValue = "{";
     if (start>end){
       for (int i = start; i < data.length; i++){
-        returnValue+= data[i];
+        returnValue += data[i];
         returnValue += " ";
       }
       for (int i = 0; i < end; i++){
         if(i == end - 1){
-          returnValue+= data[end] + "}";
+          returnValue+= data[end];
         }
         else{
         returnValue+= data[i];
@@ -37,10 +37,10 @@ public class MyDeque<E>{
       }
       }
     }
-    else{
+    if (start<end){
       for (int i = start; i < end; i++){
         if(i == end - 1){
-          returnValue+= data[end] + "}";
+          returnValue+= data[end];
         }
         else{
         returnValue+= data[i];
@@ -50,6 +50,7 @@ public class MyDeque<E>{
       }
 
   }
+  returnValue+= "}";
   return returnValue;
 }
 
@@ -62,7 +63,7 @@ public class MyDeque<E>{
       resize();
     }
     if (size != 0){
-      if (start == 0){
+      if (start == 0 && end != 0){
       start = data.length - 1;
     }
     else{
@@ -76,9 +77,9 @@ public class MyDeque<E>{
 
   public void addLast(E element){
     if (element == null) {
-      throw new NullPointerException();
+      throw new NullPointerException("Element is null");
      }
-    if (size == data.length ) {
+    if (size() == data.length ){
       resize();
       }
     if (size!= 0 && end == data.length - 1){
@@ -123,7 +124,7 @@ public class MyDeque<E>{
   public void resize() {
     E[] temp = (E[]) new Object[data.length * 2 + 1];
     int a = 0;
-    for (int i = start; i < data.length && (start > end || (start <= end && i <= end)); i++) {
+    for (int i = start; i < data.length && (start > end); i++) {
       temp[a] = data[i];
       a++;
     }
