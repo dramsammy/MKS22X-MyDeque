@@ -22,34 +22,22 @@ public class MyDeque<E>{
   }
   public String toString(){
     String returnValue = "{";
-    if (start>end){
-      for (int i = start; i < data.length; i++){
+    if (start <= end){
+      for (int i = start; i < end; i++){
         returnValue += data[i];
         returnValue += " ";
       }
-      for (int i = 0; i < end; i++){
-        if(i == end - 1){
-          returnValue+= data[end];
-        }
-        else{
-        returnValue+= data[i];
-        returnValue += " ";
-      }
-      }
     }
-    if (start<end){
-      for (int i = start; i < end; i++){
-        if(i == end - 1){
-          returnValue+= data[end];
+    else{
+      for (int i = start; i < data.length; i++){
+          returnValue+= data[i];
+          returnValue += " ";
         }
-        else{
-        returnValue+= data[i];
-        returnValue += " ";
+        for (int i = 0; i <= end; i++){
+            returnValue+= data[i];
+            returnValue += " ";
+          }
       }
-
-      }
-
-  }
   returnValue+= "}";
   return returnValue;
 }
