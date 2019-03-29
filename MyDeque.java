@@ -47,22 +47,19 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException("Element is null");
     }
-    if (size() == data.length){
+    if (size == data.length){
       resize();
     }
-    if (size != 0){
-      if (start == 0 && end != 0){
-      start = data.length - 1;
-    }
-    else{
-      start--;
-    }
+    if (size == 0){
+      data[start] = element;
+      end = start;
+      size++;
+      return;
   }
-    data[start] = element;
-    size++;
-
-  }
-
+  start = (start - 1 + data.length) % data.length;
+  data[start] = element;
+  size++;
+}
   public void addLast(E element){
     if (element == null) {
       throw new NullPointerException("Element is null");
@@ -112,19 +109,13 @@ public class MyDeque<E>{
   public void resize() {
     E[] temp = (E[]) new Object[data.length * 2 + 1];
     int a = 0;
-    for (int i = start; i < data.length && (start > end); i++) {
-      temp[a] = data[i];
+    for (int i = start; i <start + size; i++) {
+      temp[i - start] = data[i % data.length];
       a++;
     }
-    if (start > end) {
-      for (int i = 0; i <= end; i++) {
-      temp[a] = data[i];
-      a++;
-     }
-   }
-    data = temp;
+    end = size - 1;
     start = 0;
-    end = a;
+    data = temp;
 }
   public static void main(String[] args) {
     MyDeque<Integer> Test1 = new MyDeque<>();
