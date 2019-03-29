@@ -100,7 +100,15 @@ public class MyDeque<E>{
       throw new NoSuchElementException();
     }
     E returnValue = data[end];
-    end--;
+    data[end] = null;
+    if (size != 1){
+      if (end == 0){
+        end = data.length - 1;
+      }
+      else{
+        end--;
+      }
+    }
     size--;
     return returnValue;
   }
