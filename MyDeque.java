@@ -64,15 +64,17 @@ public class MyDeque<E>{
     if (element == null) {
       throw new NullPointerException("Element is null");
      }
-    if (size() == data.length ){
+    if (size == data.length ){
       resize();
       }
-    if (size!= 0 && end == data.length - 1){
+    if (size!= 0){
+      if (end == data.length - 1){
       end = 0;
       }
     else{
       end++;
       }
+    }
     data[end] = element;
     size++;
      }
@@ -81,7 +83,15 @@ public class MyDeque<E>{
       throw new NoSuchElementException();
     }
     E returnValue = data[start];
-    start++;
+    data[start] = null;
+    if (size != 1){
+      if (start == data.length - 1){
+        start = 0;
+      }
+      else{
+        start++;
+      }
+    }
     size--;
     return returnValue;
    }
