@@ -9,5 +9,7 @@ public class Calculator extends MyDeque{
       EvalH(a, str);
       return a.getLast();
     }
-    public static double EvalH()
+    public static void EvalH(MyDeque a, String[] b){
+      
+    }
 }
