@@ -4,13 +4,13 @@ public class Calculator extends MyDeque{
      *Assume valid postfix notation, separated by spaces.
      */
     public static double eval(String s){
-      String[] str = s.split();
+      String[] str = s.split(" ");
       MyDeque<Double> a = new MyDeque<Double>();
       EvalH(a, str);
       return a.getLast();
     }
-    public static void EvalH(MyDeque a, String[] b){
-      for (int index = 0; i < b.length; i++){
+    public static void EvalH(MyDeque<Double> a, String[] b){
+      for (int i = 0; i < b.length; i++){
         if (b[i].equals("+")){
           double second = a.removeLast();
           double first = a.removeLast();
