@@ -5,11 +5,9 @@ public class Calculator extends MyDeque{
      */
     public static double eval(String s){
       String[] str = s.split();
-      MyDeque a = new MyDeque();
-      for (int i = 0; i < str.length; i++){
-        a.add(i);
-      }
-
+      MyDeque<Double> a = new MyDeque<Double>();
+      EvalH(a, str);
+      return a.getLast();
     }
     public static double EvalH()
 }
