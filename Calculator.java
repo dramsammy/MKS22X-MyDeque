@@ -10,6 +10,35 @@ public class Calculator extends MyDeque{
       return a.getLast();
     }
     public static void EvalH(MyDeque a, String[] b){
-      
+      for (int index = 0; i < b.length; i++){
+        if (b[i].equals("+")){
+          double second = a.removeLast();
+          double first = a.removeLast();
+          a.addLast(first + second);
+        }
+        else if (b[i].equals("-")){
+          double second = a.removeLast();
+          double first = a.removeLast();
+          a.addLast(first - second);
+        }
+        else if (b[i].equals("*")){
+          double second = a.removeLast();
+          double first = a.removeLast();
+          a.addLast(first * second);
+        }
+        else if (b[i].equals("/")){
+          double second = a.removeLast();
+          double first = a.removeLast();
+          a.addLast(first / second);
+        }
+        else if (b[i].equals("%")){
+          double second = a.removeLast();
+          double first = a.removeLast();
+          a.addLast(first % second);
+        }
+        else{
+          a.addLast(Double.parseDouble(b[i]));
+          }
+      }
     }
 }
